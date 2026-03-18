@@ -5,25 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="CyberThink Initiative — повышение цифровой грамотности молодёжи Кыргызстана">
   <title>CyberThink Initiative</title>
-  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
-  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Share+Tech+Mono&display=swap)" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 
   <style>
     /* ===== RESET & BASE ===== */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg:        #0a0e14;
-      --bg2:       #0f1520;
-      --bg3:       #141d2b;
-      --accent:    #00ff88;
-      --accent2:   #00c8ff;
-      --danger:    #ff4d6d;
-      --text:      #e0e6f0;
-      --muted:     #7a8aaa;
-      --border:    rgba(0,255,136,.15);
-      --card-bg:   rgba(20,29,43,.85);
+      --bg:        #f7efff;
+      --bg2:       #f1e4ff;
+      --bg3:       #e7d3ff;
+      --accent:    #ff3ea8;
+      --accent2:   #9b6dff;
+      --danger:    #ff5f9f;
+      --text:      #2b1843;
+      --muted:     #6f5a8d;
+      --border:    rgba(155, 109, 255, .25);
+      --card-bg:   rgba(255, 255, 255, .78);
+      --accent-rgb: 255, 79, 191;
       --font:      'Space Grotesk', sans-serif;
       --mono:      'Share Tech Mono', monospace;
       --radius:    12px;
@@ -35,6 +36,10 @@
     body {
       font-family: var(--font);
       background: var(--bg);
+      background-image:
+        radial-gradient(circle at 12% 10%, rgba(255, 62, 168, .16), transparent 40%),
+        radial-gradient(circle at 88% 0%, rgba(155, 109, 255, .2), transparent 44%),
+        linear-gradient(160deg, #fff8ff 0%, #f4e8ff 48%, #ead9ff 100%);
       color: var(--text);
       line-height: 1.65;
       overflow-x: hidden;
@@ -98,7 +103,7 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 100;
-      background: rgba(10,14,20,.92);
+      background: rgba(249, 238, 255, .88);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
@@ -115,14 +120,20 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: .6rem;
+      gap: .75rem;
       font-weight: 700;
       font-size: 1.05rem;
       letter-spacing: .03em;
+      padding: .35rem .7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(var(--accent-rgb), .28);
+      background: linear-gradient(135deg, rgba(255,255,255,.1), rgba(255,255,255,.02));
+      box-shadow: 0 8px 22px rgba(255, 79, 191, .22);
     }
     .logo img {
-      height: 36px;
+      height: 58px;
       width: auto;
+      filter: drop-shadow(0 6px 16px rgba(255, 79, 191, .45));
     }
     .logo__text span { color: var(--accent); }
 
@@ -141,7 +152,7 @@
 
     .btn-nav {
       background: var(--accent);
-      color: var(--bg);
+      color: #2b1843;
       font-weight: 700;
       font-size: .85rem;
       padding: .5rem 1.2rem;
@@ -183,8 +194,8 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(0,255,136,.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,255,136,.06) 1px, transparent 1px);
+        linear-gradient(rgba(255, 143, 221, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(183, 139, 255, .08) 1px, transparent 1px);
       background-size: 40px 40px;
       animation: gridScroll 20s linear infinite;
     }
@@ -199,11 +210,18 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(0,255,136,.12) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255, 79, 191, .28) 0%, rgba(183, 139, 255, .12) 40%, transparent 72%);
       pointer-events: none;
     }
 
     .hero__content { position: relative; z-index: 1; max-width: 780px; }
+
+    .hero__brand-logo {
+      height: 110px;
+      width: auto;
+      margin: 0 auto 1rem;
+      filter: drop-shadow(0 12px 28px rgba(255, 79, 191, .45));
+    }
 
     .hero__pre {
       font-family: var(--mono);
@@ -253,12 +271,12 @@
     }
     .btn--primary {
       background: var(--accent);
-      color: var(--bg);
+      color: #2b1843;
     }
     .btn--primary:hover {
-      background: #00e07a;
+      background: #ff7dd1;
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,255,136,.3);
+      box-shadow: 0 10px 26px rgba(255, 79, 191, .38);
     }
     .btn--outline {
       background: transparent;
@@ -266,7 +284,7 @@
       border: 1px solid var(--accent);
     }
     .btn--outline:hover {
-      background: rgba(0,255,136,.08);
+      background: rgba(255, 79, 191, .12);
       transform: translateY(-2px);
     }
 
@@ -333,7 +351,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(0,255,136,.04), transparent);
+      background: linear-gradient(135deg, rgba(255, 79, 191, .14), rgba(183, 139, 255, .06) 45%, transparent);
     }
     .mv-line { margin-bottom: .5rem; color: var(--muted); }
     .mv-line .kw  { color: var(--accent2); }
@@ -419,6 +437,109 @@
     .threat-card p {
       font-size: .88rem;
       color: var(--muted);
+    }
+
+    /* ===== LINK CHECKER ===== */
+    .checker-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1.5rem;
+      align-items: start;
+    }
+    .checker-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.4rem;
+    }
+    .checker-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: .7rem;
+    }
+    .checker-form .form-group { margin-bottom: 1rem; }
+    .checker-form input,
+    .checker-form textarea {
+      width: 100%;
+      background: rgba(255, 255, 255, .9);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: .72rem .95rem;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: .95rem;
+      outline: none;
+      transition: border-color var(--trans), box-shadow var(--trans);
+      resize: vertical;
+    }
+    .checker-form input:focus,
+    .checker-form textarea:focus {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 3px rgba(155, 109, 255, .15);
+    }
+    .checker-hint {
+      margin-top: .8rem;
+      font-size: .8rem;
+      color: var(--muted);
+    }
+    .checker-score {
+      display: flex;
+      align-items: baseline;
+      gap: .55rem;
+      margin-bottom: .85rem;
+    }
+    .checker-score__value {
+      font-family: var(--mono);
+      font-size: 2rem;
+      line-height: 1;
+      color: var(--accent2);
+    }
+    .checker-score__label {
+      font-size: .84rem;
+      color: var(--muted);
+    }
+    .risk-badge {
+      display: inline-block;
+      padding: .2rem .65rem;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-family: var(--mono);
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+    }
+    .risk-badge--low { color: #2ea15d; border-color: rgba(46, 161, 93, .45); }
+    .risk-badge--medium { color: #9a6d11; border-color: rgba(154, 109, 17, .45); }
+    .risk-badge--high { color: #b6386c; border-color: rgba(182, 56, 108, .45); }
+    .check-list {
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+      margin-top: .25rem;
+    }
+    .check-item {
+      display: grid;
+      grid-template-columns: 135px 1fr;
+      gap: .5rem;
+      font-size: .86rem;
+      align-items: start;
+      color: var(--text);
+    }
+    .check-item strong {
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .75rem;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+      margin-top: .15rem;
+    }
+    .check-value--safe { color: #267f49; }
+    .check-value--warn { color: #8b650f; }
+    .check-value--risk { color: #a0305f; }
+    .checker-note {
+      margin-top: 1rem;
+      font-size: .78rem;
+      color: var(--muted);
+      border-top: 1px dashed var(--border);
+      padding-top: .7rem;
     }
 
     /* ===== HOW IT WORKS ===== */
@@ -630,14 +751,14 @@
 
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
-      .mission-grid, .contact-grid { grid-template-columns: 1fr; }
+      .mission-grid, .contact-grid, .checker-grid { grid-template-columns: 1fr; }
       .footer__inner { grid-template-columns: 1fr; }
 
       .nav-links {
         display: none;
         position: absolute;
         top: 100%; left: 0; right: 0;
-        background: rgba(10,14,20,.98);
+        background: rgba(248, 236, 255, .98);
         border-bottom: 1px solid var(--border);
         flex-direction: column;
         padding: 1.5rem;
@@ -648,6 +769,9 @@
 
       .hero h1 { font-size: 2rem; }
       .step-item { grid-template-columns: 44px 1fr; }
+      .logo img { height: 48px; }
+      .hero__brand-logo { height: 86px; }
+      .check-item { grid-template-columns: 1fr; gap: .3rem; }
     }
   </style>
 </head>
@@ -666,6 +790,7 @@
       <ul class="nav-links" id="nav-list" role="list">
         <li><a href="#mission">Миссия</a></li>
         <li><a href="#threats">Угрозы</a></li>
+        <li><a href="#link-check">Проверить ссылку</a></li>
         <li><a href="#how">Как работаем</a></li>
         <li><a href="#impact">Влияние</a></li>
         <li><a href="#contact" class="btn-nav">Связаться</a></li>
@@ -681,6 +806,7 @@
       <div class="hero__glow" aria-hidden="true"></div>
 
       <div class="hero__content">
+        <img class="hero__brand-logo" src="images/cyberthink_logo.png" alt="CyberThink Initiative">
         <p class="hero__pre">CyberThink Initiative / Кыргызстан</p>
         <h1>
           Цифровая<br>
@@ -783,7 +909,7 @@
               <p>
                 В Бишкеке задержана группа дропперов, причастных к крупной мошеннической схеме с использованием
                 банковских карт подростков. Мошенники вербовали несовершеннолетних, предлагая «лёгкий заработок».
-                <a href="[kaktus.media](https://kaktus.media/doc/535467_v_bishkeke_zaderjana_gryppa_dropperov_prichastnyh_k_krypnoy_moshennicheskoy_sheme.html)"
+                 <a href="https://kaktus.media/doc/535467_v_bishkeke_zaderjana_gryppa_dropperov_prichastnyh_k_krypnoy_moshennicheskoy_sheme.html"
                    target="_blank" rel="noopener noreferrer">Читать подробнее →</a>
               </p>
             </div>
@@ -838,42 +964,91 @@
 
     <div class="glow-line"></div>
 
+    <!-- ========== ПРОВЕРИТЬ ССЫЛКУ ========== -->
+    <section id="link-check" class="section section--alt">
+      <div class="container">
+        <div class="section__head fade-up">
+          <span class="tag">Практика</span>
+          <h2>Проверить ссылку</h2>
+          <p>Учебный инструмент: вставьте ссылку и, при наличии, текст сообщения для экспресс-проверки на признаки мошенничества.</p>
+        </div>
+
+        <div class="checker-grid">
+          <div class="checker-card fade-up">
+            <h3>Введите данные для анализа</h3>
+            <form id="linkCheckForm" class="checker-form" novalidate>
+              <div class="form-group">
+                <label for="lcUrl">// ссылка</label>
+                <input id="lcUrl" type="text" placeholder="Например: bank-security-login.com/verify" required>
+              </div>
+              <div class="form-group">
+                <label for="lcText">// текст сообщения (необязательно)</label>
+                <textarea id="lcText" rows="4" placeholder="Например: Срочно подтвердите карту в течение 10 минут и получите бонус"></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary">Проверить ссылку</button>
+              <p class="checker-hint">Совет: чем больше исходного текста вы вставите, тем точнее будет оценка.</p>
+            </form>
+          </div>
+
+          <div class="checker-card fade-up delay-1">
+            <h3>Результат проверки</h3>
+            <div class="checker-score">
+              <div class="checker-score__value" id="lcScore">--</div>
+              <div class="checker-score__label">индекс доверия</div>
+            </div>
+            <span class="risk-badge" id="lcRiskBadge">Ожидает проверки</span>
+
+            <div class="check-list" id="lcChecklist">
+              <div class="check-item"><strong>Домен</strong><span>Пока нет данных</span></div>
+              <div class="check-item"><strong>Ошибки в тексте</strong><span>Пока нет данных</span></div>
+              <div class="check-item"><strong>Срочность</strong><span>Пока нет данных</span></div>
+              <div class="check-item"><strong>Обещания</strong><span>Пока нет данных</span></div>
+            </div>
+
+            <p class="checker-note" id="lcSourceNote">Режим проверки: локальный (эвристика). Инструмент обучающий и не заменяет профессиональные антифишинг-сервисы.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
     <!-- ========== КАК РАБОТАЕМ ========== -->
     <section id="how" class="section section--alt">
       <div class="container container--narrow">
         <div class="section__head fade-up">
           <span class="tag">Наш подход</span>
           <h2>Как работает проект</h2>
-          <p>Системный подход к цифровой безопасности в школах</p>
+          <p>Обучаем подростков Кыргызстана безопасному интернету, базовым навыкам распознавания мошенничества и кибербезопасности с ИИ</p>
         </div>
 
         <ol class="steps-list" role="list">
           <li class="step-item fade-up">
             <div class="step-num">01</div>
             <div class="step-body">
-              <h3>Входим в школы</h3>
-              <p>Работаем напрямую со школьниками и педагогами, проводим 8 еженедельных занятий с волонтёрами и активными учениками.</p>
+              <h3>Работаем с подростками Кыргызстана</h3>
+              <p>Проводим занятия в школах и сообществах, где подростки получают понятные и практичные знания о безопасности в интернете.</p>
             </div>
           </li>
           <li class="step-item fade-up delay-1">
             <div class="step-num">02</div>
             <div class="step-body">
-              <h3>Обучаем практически</h3>
-              <p>Разбираем реальные схемы мошенников, учим распознавать фишинг, защищать персональные данные и безопасно вести себя в интернете.</p>
+              <h3>Учим распознавать мошенничество</h3>
+              <p>Разбираем реальные схемы обмана, фишинг и социальную инженерию, чтобы подростки могли вовремя распознавать угрозы и защищать себя.</p>
             </div>
           </li>
           <li class="step-item fade-up delay-2">
             <div class="step-num">03</div>
             <div class="step-body">
-              <h3>Создаём ядро лидеров</h3>
-              <p>Два активных ученика на школу + волонтёр создают постоянное ядро поддержки, которое распространяет знания среди сверстников.</p>
+              <h3>Даём базу кибербезопасности</h3>
+              <p>Объясняем основы кибербезопасности: как защищать аккаунты, персональные данные и устройства в повседневной цифровой среде.</p>
             </div>
           </li>
           <li class="step-item fade-up delay-3">
             <div class="step-num">04</div>
             <div class="step-body">
-              <h3>Масштабируем результат</h3>
-              <p>Высокий эффект при низких административных затратах делает проект реально масштабируемым и устойчивым без постоянного участия руководства.</p>
+              <h3>Внедряем кибербезопасность с ИИ</h3>
+              <p>Показываем, как использовать инструменты ИИ для более безопасного поведения онлайн, критического анализа информации и профилактики цифровых рисков.</p>
             </div>
           </li>
         </ol>
@@ -891,21 +1066,16 @@
 
         <div class="impact-grid">
           <div class="impact-card fade-up">
-            <div class="impact-card__icon">🏫</div>
-            <h3>Системное обучение</h3>
-            <p>8 еженедельных занятий обеспечивают базовые и практические навыки для всех учеников пилотных классов.</p>
-          </div>
-          <div class="impact-card fade-up delay-1">
             <div class="impact-card__icon">👥</div>
             <h3>Эффект распространения</h3>
             <p>Знания передаются среди сверстников через активных учеников даже без постоянного участия администрации.</p>
           </div>
-          <div class="impact-card fade-up delay-2">
+          <div class="impact-card fade-up delay-1">
             <div class="impact-card__icon">📈</div>
             <h3>Рост осведомлённости</h3>
             <p>С 25% до 80–85% учеников, способных распознавать основные угрозы и применять меры защиты.</p>
           </div>
-          <div class="impact-card fade-up delay-3">
+          <div class="impact-card fade-up delay-2">
             <div class="impact-card__icon">🛡️</div>
             <h3>Снижение рисков</h3>
             <p>Вероятность успешного попадания в мошеннические схемы снижается в 3–4 раза по сравнению с исходным уровнем.</p>
@@ -926,13 +1096,25 @@
             <p>Хотите сотрудничать, пригласить нас в школу или узнать больше о проекте?</p>
 
             <div class="contact-links">
-              <a href="[instagram.com](https://www.instagram.com/cyberthink.initiative/)" target="_blank" rel="noopener noreferrer" class="contact-link">
+              <a href="https://www.instagram.com/cyberthink.initiative/" target="_blank" rel="noopener noreferrer" class="contact-link">
                 <span class="cl-icon">📸</span>
                 <span>@cyberthink.initiative</span>
               </a>
-              <a href="mailto:info@cyberthink.kg" class="contact-link">
+              <a href="https://www.instagram.com/cybertor.kg/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <span class="cl-icon">🔎</span>
+                <span>Полезно: @cybertor.kg</span>
+              </a>
+              <a href="https://www.instagram.com/cyberguvd/" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <span class="cl-icon">🛡️</span>
+                <span>Полезно: @cyberguvd</span>
+              </a>
+              <a href="https://t.me/+1g7bD4WvxXgwZDEy" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <span class="cl-icon">📲</span>
+                <span>Telegram канал</span>
+              </a>
+              <a href="mailto:cyberthinkinitiative@gmail.com" class="contact-link">
                 <span class="cl-icon">✉️</span>
-                <span>info@cyberthink.kg</span>
+                <span>cyberthinkinitiative@gmail.com</span>
               </a>
               <div class="contact-link" style="cursor:default;">
                 <span class="cl-icon">📍</span>
@@ -973,8 +1155,11 @@
           <strong><span>Cyber</span>Think Initiative</strong>
           <p>Цифровая безопасность для молодёжи Кыргызстана</p>
           <div class="footer__social">
-            <a href="[instagram.com](https://www.instagram.com/cyberthink.initiative/)" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <a href="https://www.instagram.com/cyberthink.initiative/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+            <a href="https://t.me/+1g7bD4WvxXgwZDEy" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9.78 18.65c-.32 0-.27-.12-.38-.42l-.96-3.16 7.39-4.68c.35-.21.06-.33-.23-.12l-9.13 5.75-3.95-1.24c-.86-.27-.87-.86.18-1.27L18.1 7.56c.72-.26 1.35.17 1.12 1.26L16.6 21.17c-.18.87-.66 1.08-1.34.67l-3.7-2.73-1.78 1.71c-.2.2-.37.37-.75.37z"/></svg>
             </a>
           </div>
         </div>
@@ -983,6 +1168,7 @@
           <strong>// navigate</strong>
           <a href="#mission">Миссия</a>
           <a href="#threats">Угрозы</a>
+          <a href="#link-check">Проверить ссылку</a>
           <a href="#how">Как работаем</a>
           <a href="#impact">Влияние</a>
         </nav>
@@ -990,7 +1176,11 @@
         <nav class="footer__nav" aria-label="Дополнительно">
           <strong>// connect</strong>
           <a href="#contact">Контакты</a>
-          <a href="[instagram.com](https://www.instagram.com/cyberthink.initiative/)" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.instagram.com/cyberthink.initiative/" target="_blank" rel="noopener noreferrer">Instagram</a>
+          <a href="https://www.instagram.com/cybertor.kg/" target="_blank" rel="noopener noreferrer">Полезно: @cybertor.kg</a>
+          <a href="https://www.instagram.com/cyberguvd/" target="_blank" rel="noopener noreferrer">Полезно: @cyberguvd</a>
+          <a href="https://t.me/+1g7bD4WvxXgwZDEy" target="_blank" rel="noopener noreferrer">Telegram</a>
+          <a href="mailto:cyberthinkinitiative@gmail.com">cyberthinkinitiative@gmail.com</a>
         </nav>
       </div>
       <p class="footer__copy">© 2026 CyberThink Initiative — Кыргызстан</p>
@@ -1072,6 +1262,202 @@
     }, { threshold: 0.5 });
 
     document.querySelectorAll('.stat-card').forEach(el => counterObserver.observe(el));
+
+    // ── Link checker (local + backend API) ──
+    const linkCheckForm = document.getElementById('linkCheckForm');
+
+    function classifyTextMatch(text, words) {
+      const lower = text.toLowerCase();
+      const matches = words.filter(w => lower.includes(w));
+      return matches;
+    }
+
+    function makeItemStatus(level, text) {
+      const cls = level === 'risk' ? 'check-value--risk' : level === 'warn' ? 'check-value--warn' : 'check-value--safe';
+      return `<span class="${cls}">${text}</span>`;
+    }
+
+    function safeUrl(raw) {
+      const trimmed = raw.trim();
+      if (!trimmed) return null;
+      const prepared = /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+      try {
+        return new URL(prepared);
+      } catch {
+        return null;
+      }
+    }
+
+    function renderLinkResult(result) {
+      const scoreEl = document.getElementById('lcScore');
+      const badgeEl = document.getElementById('lcRiskBadge');
+      const listEl = document.getElementById('lcChecklist');
+      const sourceEl = document.getElementById('lcSourceNote');
+
+      scoreEl.textContent = `${result.score}/100`;
+      badgeEl.className = `risk-badge ${result.riskClass}`;
+      badgeEl.textContent = result.riskLabel;
+
+      listEl.innerHTML = [
+        `<div class="check-item"><strong>Домен</strong>${makeItemStatus(result.checks.domain.level, result.checks.domain.message)}</div>`,
+        `<div class="check-item"><strong>Ошибки в тексте</strong>${makeItemStatus(result.checks.typos.level, result.checks.typos.message)}</div>`,
+        `<div class="check-item"><strong>Срочность</strong>${makeItemStatus(result.checks.urgency.level, result.checks.urgency.message)}</div>`,
+        `<div class="check-item"><strong>Обещания</strong>${makeItemStatus(result.checks.promises.level, result.checks.promises.message)}</div>`
+      ].join('');
+
+      if (sourceEl) {
+        sourceEl.textContent = `Режим проверки: ${result.source}. Инструмент обучающий и не заменяет профессиональные антифишинг-сервисы.`;
+      }
+    }
+
+    function analyzeLocal(urlRaw, textRaw) {
+      const parsed = safeUrl(urlRaw);
+      if (!parsed) {
+        return {
+          score: 0,
+          riskLabel: 'Высокий риск',
+          riskClass: 'risk-badge--high',
+          source: 'локальный (эвристика)',
+          checks: {
+            domain: { level: 'risk', message: 'Ссылка некорректная или неполная' },
+            typos: { level: 'warn', message: 'Невозможно оценить без корректной ссылки' },
+            urgency: { level: 'warn', message: 'Добавьте текст сообщения для анализа' },
+            promises: { level: 'warn', message: 'Добавьте текст сообщения для анализа' }
+          }
+        };
+      }
+
+      const host = parsed.hostname.toLowerCase();
+      const full = parsed.href.toLowerCase();
+      const text = textRaw.toLowerCase();
+
+      let penalty = 0;
+      let domainLevel = 'safe';
+      let domainMsg = 'Домен выглядит стандартно';
+
+      const suspiciousTlds = ['.xyz', '.top', '.click', '.work', '.loan', '.gq', '.cf', '.ml'];
+      const shorteners = ['bit.ly', 'tinyurl.com', 't.co', 'goo.gl', 'is.gd', 'cutt.ly', 'rb.gy'];
+      const brandWords = ['bank', 'visa', 'mastercard', 'paypal', 'instagram', 'telegram', 'google', 'apple', 'mvd', 'gov', 'gosuslugi'];
+      const urlFlags = [];
+
+      if (parsed.protocol !== 'https:') { penalty += 18; urlFlags.push('нет HTTPS'); }
+      if (/^\d+\.\d+\.\d+\.\d+$/.test(host)) { penalty += 20; urlFlags.push('IP вместо домена'); }
+      if (host.includes('xn--')) { penalty += 16; urlFlags.push('псевдокириллица/IDN'); }
+      if (host.split('.').length > 4) { penalty += 10; urlFlags.push('слишком много поддоменов'); }
+      if (shorteners.includes(host)) { penalty += 14; urlFlags.push('домен-сокращатель'); }
+      if (suspiciousTlds.some(tld => host.endsWith(tld))) { penalty += 12; urlFlags.push('рискованная доменная зона'); }
+      if (full.includes('@')) { penalty += 10; urlFlags.push('символ @ в URL'); }
+      if (full.length > 120) { penalty += 8; urlFlags.push('слишком длинная ссылка'); }
+      if (/[-_]{2,}/.test(host)) { penalty += 6; urlFlags.push('необычные символы в домене'); }
+      if (/\d{4,}/.test(host)) { penalty += 5; urlFlags.push('много цифр в домене'); }
+
+      const brandSpoof = brandWords.some(b => host.includes(b) && !host.endsWith(`${b}.com`) && !host.endsWith(`${b}.org`) && !host.endsWith(`${b}.kg`) && !host.endsWith(`${b}.gov`) && !host.endsWith(`${b}.gov.kg`));
+      if (brandSpoof) { penalty += 14; urlFlags.push('возможная подмена бренда в домене'); }
+
+      if (urlFlags.length >= 3) {
+        domainLevel = 'risk';
+        domainMsg = `Подозрительно: ${urlFlags.join(', ')}`;
+      } else if (urlFlags.length >= 1) {
+        domainLevel = 'warn';
+        domainMsg = `Требует проверки: ${urlFlags.join(', ')}`;
+      }
+
+      const urgencyWords = ['срочно', 'немедленно', 'прямо сейчас', 'в течение', 'иначе', 'блокировка', 'последний шанс', 'urgent', 'immediately'];
+      const promiseWords = ['бонус', 'подарок', 'выигрыш', 'приз', 'легкий заработок', 'доход без вложений', 'компенсация', 'free', 'reward', 'cashback'];
+      const typoPatterns = [/!!!+/, /\?\?\?+/, /[A-ZА-Я]{8,}/, /\s{2,}/];
+
+      const urgencyMatches = text ? classifyTextMatch(text, urgencyWords) : [];
+      const promiseMatches = text ? classifyTextMatch(text, promiseWords) : [];
+      const typoHits = text ? typoPatterns.filter(r => r.test(textRaw)).length : 0;
+
+      let textLevel = 'safe';
+      let textMsg = text ? 'Критичных ошибок в тексте не найдено' : 'Для анализа добавьте текст сообщения';
+      if (text) {
+        if (typoHits >= 2) {
+          penalty += 12;
+          textLevel = 'risk';
+          textMsg = 'Много признаков некачественного/подозрительного текста';
+        } else if (typoHits === 1) {
+          penalty += 6;
+          textLevel = 'warn';
+          textMsg = 'Есть признаки странной подачи текста';
+        }
+      } else {
+        textLevel = 'warn';
+      }
+
+      let urgencyLevel = 'safe';
+      let urgencyMsg = text ? 'Давление срочностью не обнаружено' : 'Для анализа добавьте текст сообщения';
+      if (urgencyMatches.length >= 2) {
+        penalty += 18;
+        urgencyLevel = 'risk';
+        urgencyMsg = `Сильный триггер срочности: ${urgencyMatches.slice(0, 3).join(', ')}`;
+      } else if (urgencyMatches.length === 1) {
+        penalty += 10;
+        urgencyLevel = 'warn';
+        urgencyMsg = `Есть давление срочностью: ${urgencyMatches[0]}`;
+      } else if (!text) {
+        urgencyLevel = 'warn';
+      }
+
+      let promiseLevel = 'safe';
+      let promiseMsg = text ? 'Подозрительных обещаний не обнаружено' : 'Для анализа добавьте текст сообщения';
+      if (promiseMatches.length >= 2) {
+        penalty += 18;
+        promiseLevel = 'risk';
+        promiseMsg = `Подозрительные обещания: ${promiseMatches.slice(0, 3).join(', ')}`;
+      } else if (promiseMatches.length === 1) {
+        penalty += 10;
+        promiseLevel = 'warn';
+        promiseMsg = `Есть тревожное обещание: ${promiseMatches[0]}`;
+      } else if (!text) {
+        promiseLevel = 'warn';
+      }
+
+      const score = Math.max(0, Math.min(100, 100 - penalty));
+
+      let riskLabel = 'Низкий риск';
+      let riskClass = 'risk-badge--low';
+      if (score < 65) {
+        riskLabel = 'Высокий риск';
+        riskClass = 'risk-badge--high';
+      } else if (score < 85) {
+        riskLabel = 'Средний риск';
+        riskClass = 'risk-badge--medium';
+      }
+
+      return {
+        score,
+        riskLabel,
+        riskClass,
+        source: 'локальный (эвристика)',
+        checks: {
+          domain: { level: domainLevel, message: domainMsg },
+          typos: { level: textLevel, message: textMsg },
+          urgency: { level: urgencyLevel, message: urgencyMsg },
+          promises: { level: promiseLevel, message: promiseMsg }
+        }
+      };
+    }
+
+    if (linkCheckForm) {
+      linkCheckForm.addEventListener('submit', e => {
+        e.preventDefault();
+
+        const urlRaw = document.getElementById('lcUrl').value;
+        const textRaw = document.getElementById('lcText').value.trim();
+
+        const submitBtn = linkCheckForm.querySelector('button[type="submit"]');
+        const oldLabel = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Проверяем...';
+
+        renderLinkResult(analyzeLocal(urlRaw, textRaw));
+
+        submitBtn.disabled = false;
+        submitBtn.textContent = oldLabel;
+      });
+    }
   </script>
 
 </body>

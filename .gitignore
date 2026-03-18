@@ -1,0 +1,20 @@
+# Node modules
+node_modules/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# OneDrive / temp
+*.tmp
+*.cache
+*.bak
+
+# VS Code
+.vscode/
+
+# Env
+.env
