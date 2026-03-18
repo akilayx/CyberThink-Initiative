@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CyberThink Initiative — повышение цифровой грамотности молодёжи Кыргызстана">
+  <title>CyberThink Initiative</title>
+  <link rel="preconnect" href="[fonts.googleapis.com](https://fonts.googleapis.com)">
+  <link rel="preconnect" href="[fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
+  <link href="[fonts.googleapis.com](https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Share+Tech+Mono&display=swap)" rel="stylesheet">
+
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #0a0e14;
+      --bg2:       #0f1520;
+      --bg3:       #141d2b;
+      --accent:    #00ff88;
+      --accent2:   #00c8ff;
+      --danger:    #ff4d6d;
+      --text:      #e0e6f0;
+      --muted:     #7a8aaa;
+      --border:    rgba(0,255,136,.15);
+      --card-bg:   rgba(20,29,43,.85);
+      --font:      'Space Grotesk', sans-serif;
+      --mono:      'Share Tech Mono', monospace;
+      --radius:    12px;
+      --trans:     .3s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul, ol { list-style: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ===== SCROLLBAR ===== */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+    /* ===== UTILITY ===== */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+    .container--narrow { max-width: 780px; }
+
+    .tag {
+      display: inline-block;
+      font-family: var(--mono);
+      font-size: .72rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--border);
+      padding: .25rem .75rem;
+      border-radius: 99px;
+      margin-bottom: 1rem;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+    .section--alt { background: var(--bg2); }
+
+    .section__head {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section__head h2 {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: .75rem;
+    }
+    .section__head p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ===== GLOW LINE ===== */
+    .glow-line {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      margin: 0;
+    }
+
+    /* ===== NAVBAR ===== */
+    .header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(10,14,20,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: .85rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: .03em;
+    }
+    .logo img {
+      height: 36px;
+      width: auto;
+    }
+    .logo__text span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      font-size: .9rem;
+      color: var(--muted);
+      transition: color var(--trans);
+      font-family: var(--mono);
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    .btn-nav {
+      background: var(--accent);
+      color: var(--bg);
+      font-weight: 700;
+      font-size: .85rem;
+      padding: .5rem 1.2rem;
+      border-radius: var(--radius);
+      transition: opacity var(--trans);
+    }
+    .btn-nav:hover { opacity: .85; }
+
+    .burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: var(--trans);
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    .hero__grid-bg {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,136,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,136,.06) 1px, transparent 1px);
+      background-size: 40px 40px;
+      animation: gridScroll 20s linear infinite;
+    }
+    @keyframes gridScroll {
+      from { background-position: 0 0; }
+      to   { background-position: 0 40px; }
+    }
+
+    .hero__glow {
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,255,136,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero__content { position: relative; z-index: 1; max-width: 780px; }
+
+    .hero__pre {
+      font-family: var(--mono);
+      font-size: .82rem;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+      letter-spacing: .1em;
+    }
+    .hero__pre::before { content: '> '; }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.12;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .accent { color: var(--accent); }
+    .hero h1 .accent2 { color: var(--accent2); }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .hero__actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--font);
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .75rem 1.75rem;
+      border-radius: var(--radius);
+      border: none;
+      cursor: pointer;
+      transition: all var(--trans);
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--accent);
+      color: var(--bg);
+    }
+    .btn--primary:hover {
+      background: #00e07a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,255,136,.3);
+    }
+    .btn--outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+    .btn--outline:hover {
+      background: rgba(0,255,136,.08);
+      transform: translateY(-2px);
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .4rem;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .75rem;
+      animation: bounce 2s infinite;
+    }
+    .hero__scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 40px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateX(-50%) translateY(0); }
+      50%      { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== MISSION ===== */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .mission__text h2 {
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      margin-bottom: 1.25rem;
+    }
+    .mission__text p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+    .mission__text p:last-child { margin-bottom: 0; }
+
+    .mission__highlight {
+      color: var(--accent) !important;
+      font-weight: 600;
+    }
+
+    .mission__visual {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      font-family: var(--mono);
+      font-size: .82rem;
+      color: var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+    .mission__visual::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,255,136,.04), transparent);
+    }
+    .mv-line { margin-bottom: .5rem; color: var(--muted); }
+    .mv-line .kw  { color: var(--accent2); }
+    .mv-line .str { color: var(--accent); }
+    .mv-line .fn  { color: #f9c74f; }
+    .mv-line .cm  { color: #445566; }
+    .mv-indent { padding-left: 1.5rem; }
+
+    /* ===== STATS ===== */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: border-color var(--trans), transform var(--trans);
+    }
+    .stat-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .stat-card__num {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--mono);
+      line-height: 1;
+      margin-bottom: .5rem;
+    }
+    .stat-card__label {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+    .stat-card--danger .stat-card__num { color: var(--danger); }
+    .stat-card--blue   .stat-card__num { color: var(--accent2); }
+
+    /* ===== THREATS ===== */
+    .threats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .threat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      transition: all var(--trans);
+      position: relative;
+      overflow: hidden;
+    }
+    .threat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+      opacity: 0;
+      transition: opacity var(--trans);
+    }
+    .threat-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .threat-card:hover::before { opacity: 1; }
+
+    .threat-card--red::before   { background: var(--danger); }
+    .threat-card--blue::before  { background: var(--accent2); }
+
+    .threat-card__icon {
+      font-size: 2rem;
+      margin-bottom: .75rem;
+    }
+    .threat-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: .5rem;
+    }
+    .threat-card p {
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    /* ===== HOW IT WORKS ===== */
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .step-item {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding-bottom: 2.5rem;
+      position: relative;
+    }
+    .step-item:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 56px; left: 27px;
+      width: 2px;
+      height: calc(100% - 56px);
+      background: var(--border);
+    }
+
+    .step-num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--mono);
+      font-size: 1rem;
+      color: var(--accent);
+      background: var(--bg);
+      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-body h3 {
+      font-size: 1.05rem;
+      margin-bottom: .4rem;
+      padding-top: .9rem;
+    }
+    .step-body p {
+      font-size: .9rem;
+      color: var(--muted);
+    }
+
+    /* ===== IMPACT ===== */
+    .impact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .impact-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: all var(--trans);
+    }
+    .impact-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-3px);
+    }
+    .impact-card__icon { font-size: 2rem; margin-bottom: 1rem; }
+    .impact-card h3    { font-size: 1rem; margin-bottom: .5rem; }
+    .impact-card p     { font-size: .875rem; color: var(--muted); }
+
+    /* ===== ALERT BANNER ===== */
+    .alert-banner {
+      background: linear-gradient(135deg, rgba(255,77,109,.08), rgba(255,77,109,.03));
+      border: 1px solid rgba(255,77,109,.3);
+      border-radius: var(--radius);
+      padding: 2rem;
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .alert-banner__icon { font-size: 2.5rem; flex-shrink: 0; }
+    .alert-banner h3 { color: var(--danger); margin-bottom: .5rem; }
+    .alert-banner p  { font-size: .9rem; color: var(--muted); }
+    .alert-banner a  { color: var(--accent2); text-decoration: underline; }
+
+    /* ===== CONTACT ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .contact-info h2  { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 1rem; }
+    .contact-info p   { color: var(--muted); margin-bottom: 1.5rem; }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .9rem 1.2rem;
+      font-size: .9rem;
+      transition: all var(--trans);
+    }
+    .contact-link:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateX(4px);
+    }
+    .contact-link .cl-icon { font-size: 1.2rem; }
+
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+    }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: .85rem;
+      color: var(--muted);
+      margin-bottom: .4rem;
+      font-family: var(--mono);
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: .75rem 1rem;
+      color: var(--text);
+      font-family: var(--font);
+      font-size: .95rem;
+      transition: border-color var(--trans);
+      outline: none;
+      resize: vertical;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--accent); }
+    .form-status { font-size: .85rem; margin-top: .75rem; min-height: 1.2em; }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0 2rem;
+    }
+    .footer__inner {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2rem;
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .footer__brand strong { font-size: 1.1rem; display: block; margin-bottom: .4rem; }
+    .footer__brand strong span { color: var(--accent); }
+    .footer__brand p { font-size: .85rem; color: var(--muted); margin-bottom: 1rem; }
+    .footer__social { display: flex; gap: .75rem; }
+    .footer__social a {
+      width: 36px; height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted);
+      transition: all var(--trans);
+    }
+    .footer__social a:hover { border-color: var(--accent); color: var(--accent); }
+
+    .footer__nav strong { display: block; font-size: .85rem; color: var(--muted); margin-bottom: .75rem; font-family: var(--mono); }
+    .footer__nav a { display: block; font-size: .88rem; color: var(--muted); margin-bottom: .4rem; transition: color var(--trans); }
+    .footer__nav a:hover { color: var(--accent); }
+
+    .footer__copy {
+      text-align: center;
+      font-size: .8rem;
+      color: var(--muted);
+      font-family: var(--mono);
+    }
+
+    /* ===== ANIMATIONS ===== */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+    .fade-up.delay-1 { transition-delay: .1s; }
+    .fade-up.delay-2 { transition-delay: .2s; }
+    .fade-up.delay-3 { transition-delay: .3s; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .mission-grid, .contact-grid { grid-template-columns: 1fr; }
+      .footer__inner { grid-template-columns: 1fr; }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(10,14,20,.98);
+        border-bottom: 1px solid var(--border);
+        flex-direction: column;
+        padding: 1.5rem;
+        gap: 1.2rem;
+      }
+      .nav-links.open { display: flex; }
+      .burger { display: flex; }
+
+      .hero h1 { font-size: 2rem; }
+      .step-item { grid-template-columns: 44px 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <header class="header" id="page-top">
+    <nav class="navbar" aria-label="Основная навигация">
+      <a href="#page-top" class="logo" aria-label="CyberThink — на главную">
+        <img src="images/cyberthink_logo.png" alt="CyberThink Initiative">
+      </a>
+      <button class="burger" aria-label="Меню" aria-expanded="false" aria-controls="nav-list">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-list" role="list">
+        <li><a href="#mission">Миссия</a></li>
+        <li><a href="#threats">Угрозы</a></li>
+        <li><a href="#how">Как работаем</a></li>
+        <li><a href="#impact">Влияние</a></li>
+        <li><a href="#contact" class="btn-nav">Связаться</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero" id="home">
+      <div class="hero__grid-bg" aria-hidden="true"></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <p class="hero__pre">CyberThink Initiative / Кыргызстан</p>
+        <h1>
+          Цифровая<br>
+          <span class="accent">безопасность</span><br>
+          для молодёжи
+        </h1>
+        <p>
+          Обучаем школьников Кыргызстана защищаться от кибермошенников,
+          беречь персональные данные и уверенно жить в цифровом мире.
+        </p>
+        <div class="hero__actions">
+          <a href="#mission" class="btn btn--primary">О проекте</a>
+          <a href="#how" class="btn btn--outline">Как это работает</a>
+        </div>
+      </div>
+
+      <a href="#mission" class="hero__scroll" aria-label="Прокрутить вниз">scroll</a>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- ========== МИССИЯ ========== -->
+    <section id="mission" class="section">
+      <div class="container">
+        <div class="mission-grid">
+          <div class="mission__text fade-up">
+            <span class="tag">Наша миссия</span>
+            <h2>Кто мы и зачем</h2>
+            <p>
+              <span class="mission__highlight">CyberThink Initiative</span> — проект, направленный на повышение
+              цифровой грамотности молодёжи Кыргызстана. Мы обучаем безопасному поведению в интернете,
+              методам защиты персональных данных и распознаванию мошеннических схем.
+            </p>
+            <p>
+              В условиях стремительной цифровизации крайне важно развивать у молодёжи навыки безопасного
+              взаимодействия в киберпространстве. Проект фокусируется на работе со школьниками для внедрения
+              системного подхода к цифровой безопасности в образовательной среде.
+            </p>
+            <p>
+              Мы стремимся создать устойчивое сообщество молодых лидеров, которые будут распространять
+              знания об онлайн-безопасности и защищать своё окружение.
+            </p>
+          </div>
+
+          <div class="mission__visual fade-up delay-2" aria-hidden="true">
+            <div class="mv-line"><span class="cm">// cyberthink.kg</span></div>
+            <div class="mv-line"><span class="kw">const</span> mission = {</div>
+            <div class="mv-indent mv-line">goal: <span class="str">"digital literacy"</span>,</div>
+            <div class="mv-indent mv-line">target: <span class="str">"youth KG"</span>,</div>
+            <div class="mv-indent mv-line">topics: [</div>
+            <div class="mv-indent mv-indent mv-line"><span class="str">"phishing"</span>,</div>
+            <div class="mv-indent mv-indent mv-line"><span class="str">"data protection"</span>,</div>
+            <div class="mv-indent mv-indent mv-line"><span class="str">"scam recognition"</span>,</div>
+            <div class="mv-indent mv-indent mv-line"><span class="str">"AI awareness"</span>,</div>
+            <div class="mv-indent mv-line">],</div>
+            <div class="mv-indent mv-line">impact: <span class="fn">3–4x</span> safer,</div>
+            <div class="mv-line">};</div>
+            <br>
+            <div class="mv-line"><span class="fn">launch</span>(mission) <span class="cm">// 🚀</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- ========== СТАТИСТИКА ========== -->
+    <section id="stats" class="section section--alt">
+      <div class="container">
+        <div class="section__head fade-up">
+          <span class="tag">Реальная угроза</span>
+          <h2>Цифры, которые нельзя игнорировать</h2>
+          <p>За последние годы количество онлайн-мошенничества с участием несовершеннолетних существенно выросло в Кыргызстане</p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card stat-card--danger fade-up">
+            <div class="stat-card__num">60+</div>
+            <div class="stat-card__label">случаев мошенничества с несовершеннолетними за 6 месяцев 2025</div>
+          </div>
+          <div class="stat-card fade-up delay-1">
+            <div class="stat-card__num">25%</div>
+            <div class="stat-card__label">школьников имели базовые навыки цифровой безопасности до программы</div>
+          </div>
+          <div class="stat-card fade-up delay-2">
+            <div class="stat-card__num">80–85%</div>
+            <div class="stat-card__label">учеников смогут распознавать угрозы после прохождения курса</div>
+          </div>
+          <div class="stat-card stat-card--blue fade-up delay-3">
+            <div class="stat-card__num">3–4×</div>
+            <div class="stat-card__label">снижение вероятности попасться на мошеннические схемы</div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem;" class="fade-up">
+          <div class="alert-banner">
+            <div class="alert-banner__icon">⚠️</div>
+            <div>
+              <h3>Зафиксированный случай в Бишкеке</h3>
+              <p>
+                В Бишкеке задержана группа дропперов, причастных к крупной мошеннической схеме с использованием
+                банковских карт подростков. Мошенники вербовали несовершеннолетних, предлагая «лёгкий заработок».
+                <a href="[kaktus.media](https://kaktus.media/doc/535467_v_bishkeke_zaderjana_gryppa_dropperov_prichastnyh_k_krypnoy_moshennicheskoy_sheme.html)"
+                   target="_blank" rel="noopener noreferrer">Читать подробнее →</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== УГРОЗЫ ========== -->
+    <section id="threats" class="section">
+      <div class="container">
+        <div class="section__head fade-up">
+          <span class="tag">Виды угроз</span>
+          <h2>С чем сталкивается молодёжь</h2>
+          <p>Актуальные киберугрозы в Кыргызстане и странах региона</p>
+        </div>
+
+        <div class="threats-grid">
+          <div class="threat-card threat-card--red fade-up">
+            <div class="threat-card__icon">💳</div>
+            <h3>Дропперство</h3>
+            <p>Мошенники вербуют подростков для использования их банковских карт, вовлекая в уголовно наказуемые схемы под видом «лёгкого заработка».</p>
+          </div>
+          <div class="threat-card fade-up delay-1">
+            <div class="threat-card__icon">🎣</div>
+            <h3>Фишинг</h3>
+            <p>Поддельные сайты банков и госструктур, заражённые файлы, ссылки в мессенджерах — всё это крадёт данные и деньги.</p>
+          </div>
+          <div class="threat-card threat-card--blue fade-up delay-2">
+            <div class="threat-card__icon">🎮</div>
+            <h3>Мошенничество в играх</h3>
+            <p>Кража аккаунтов, обман внутри игровых комьюнити, финансовые махинации через криптоплатформы (Binance, Bybit).</p>
+          </div>
+          <div class="threat-card threat-card--red fade-up">
+            <div class="threat-card__icon">📷</div>
+            <h3>Шантаж и вымогательство</h3>
+            <p>Угрозы слива личных фото и информации, давление через закрытые чаты, создание фейковых страниц.</p>
+          </div>
+          <div class="threat-card fade-up delay-1">
+            <div class="threat-card__icon">📞</div>
+            <h3>Телефонные схемы</h3>
+            <p>Звонки от «сотрудников» ГКНБ, МВД или банка с угрозами уголовного дела и требованием перевести деньги на «безопасный счёт».</p>
+          </div>
+          <div class="threat-card threat-card--blue fade-up delay-2">
+            <div class="threat-card__icon">🤖</div>
+            <h3>AI-deepfake мошенничество</h3>
+            <p>Подделка голосов и видео с помощью ИИ — мошенники имитируют родственников или официальных лиц для выманивания денег.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- ========== КАК РАБОТАЕМ ========== -->
+    <section id="how" class="section section--alt">
+      <div class="container container--narrow">
+        <div class="section__head fade-up">
+          <span class="tag">Наш подход</span>
+          <h2>Как работает проект</h2>
+          <p>Системный подход к цифровой безопасности в школах</p>
+        </div>
+
+        <ol class="steps-list" role="list">
+          <li class="step-item fade-up">
+            <div class="step-num">01</div>
+            <div class="step-body">
+              <h3>Входим в школы</h3>
+              <p>Работаем напрямую со школьниками и педагогами, проводим 8 еженедельных занятий с волонтёрами и активными учениками.</p>
+            </div>
+          </li>
+          <li class="step-item fade-up delay-1">
+            <div class="step-num">02</div>
+            <div class="step-body">
+              <h3>Обучаем практически</h3>
+              <p>Разбираем реальные схемы мошенников, учим распознавать фишинг, защищать персональные данные и безопасно вести себя в интернете.</p>
+            </div>
+          </li>
+          <li class="step-item fade-up delay-2">
+            <div class="step-num">03</div>
+            <div class="step-body">
+              <h3>Создаём ядро лидеров</h3>
+              <p>Два активных ученика на школу + волонтёр создают постоянное ядро поддержки, которое распространяет знания среди сверстников.</p>
+            </div>
+          </li>
+          <li class="step-item fade-up delay-3">
+            <div class="step-num">04</div>
+            <div class="step-body">
+              <h3>Масштабируем результат</h3>
+              <p>Высокий эффект при низких административных затратах делает проект реально масштабируемым и устойчивым без постоянного участия руководства.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ========== ВЛИЯНИЕ ========== -->
+    <section id="impact" class="section">
+      <div class="container">
+        <div class="section__head fade-up">
+          <span class="tag">Результаты</span>
+          <h2>Влияние проекта</h2>
+          <p>Реальные изменения в цифровой безопасности молодёжи</p>
+        </div>
+
+        <div class="impact-grid">
+          <div class="impact-card fade-up">
+            <div class="impact-card__icon">🏫</div>
+            <h3>Системное обучение</h3>
+            <p>8 еженедельных занятий обеспечивают базовые и практические навыки для всех учеников пилотных классов.</p>
+          </div>
+          <div class="impact-card fade-up delay-1">
+            <div class="impact-card__icon">👥</div>
+            <h3>Эффект распространения</h3>
+            <p>Знания передаются среди сверстников через активных учеников даже без постоянного участия администрации.</p>
+          </div>
+          <div class="impact-card fade-up delay-2">
+            <div class="impact-card__icon">📈</div>
+            <h3>Рост осведомлённости</h3>
+            <p>С 25% до 80–85% учеников, способных распознавать основные угрозы и применять меры защиты.</p>
+          </div>
+          <div class="impact-card fade-up delay-3">
+            <div class="impact-card__icon">🛡️</div>
+            <h3>Снижение рисков</h3>
+            <p>Вероятность успешного попадания в мошеннические схемы снижается в 3–4 раза по сравнению с исходным уровнем.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="glow-line"></div>
+
+    <!-- ========== КОНТАКТЫ ========== -->
+    <section id="contact" class="section section--alt">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info fade-up">
+            <span class="tag">Контакты</span>
+            <h2>Связаться с нами</h2>
+            <p>Хотите сотрудничать, пригласить нас в школу или узнать больше о проекте?</p>
+
+            <div class="contact-links">
+              <a href="[instagram.com](https://www.instagram.com/cyberthink.initiative/)" target="_blank" rel="noopener noreferrer" class="contact-link">
+                <span class="cl-icon">📸</span>
+                <span>@cyberthink.initiative</span>
+              </a>
+              <a href="mailto:info@cyberthink.kg" class="contact-link">
+                <span class="cl-icon">✉️</span>
+                <span>info@cyberthink.kg</span>
+              </a>
+              <div class="contact-link" style="cursor:default;">
+                <span class="cl-icon">📍</span>
+                <span>Бишкек, Кыргызстан</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="fade-up delay-2">
+            <form id="contactForm" novalidate class="form-card">
+              <div class="form-group">
+                <label for="cName">// имя</label>
+                <input id="cName" name="name" type="text" placeholder="Ваше имя" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="cEmail">// email</label>
+                <input id="cEmail" name="email" type="email" placeholder="example@mail.com" required autocomplete="email">
+              </div>
+              <div class="form-group">
+                <label for="cMsg">// сообщение</label>
+                <textarea id="cMsg" name="message" rows="4" placeholder="Ваш вопрос или предложение..."></textarea>
+              </div>
+              <button type="submit" class="btn btn--primary" style="width:100%;">Отправить →</button>
+              <p id="formStatus" role="status" aria-live="polite" class="form-status"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <div class="footer__brand">
+          <strong><span>Cyber</span>Think Initiative</strong>
+          <p>Цифровая безопасность для молодёжи Кыргызстана</p>
+          <div class="footer__social">
+            <a href="[instagram.com](https://www.instagram.com/cyberthink.initiative/)" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <nav class="footer__nav" aria-label="Навигация">
+          <strong>// navigate</strong>
+          <a href="#mission">Миссия</a>
+          <a href="#threats">Угрозы</a>
+          <a href="#how">Как работаем</a>
+          <a href="#impact">Влияние</a>
+        </nav>
+
+        <nav class="footer__nav" aria-label="Дополнительно">
+          <strong>// connect</strong>
+          <a href="#contact">Контакты</a>
+          <a href="[instagram.com](https://www.instagram.com/cyberthink.initiative/)" target="_blank" rel="noopener noreferrer">Instagram</a>
+        </nav>
+      </div>
+      <p class="footer__copy">© 2026 CyberThink Initiative — Кыргызстан</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Burger menu ──
+    const burger  = document.querySelector('.burger');
+    const navList = document.getElementById('nav-list');
+
+    burger.addEventListener('click', () => {
+      const open = navList.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+
+    // Close on nav link click
+    navList.querySelectorAll('a').forEach(a =>
+      a.addEventListener('click', () => {
+        navList.classList.remove('open');
+        burger.setAttribute('aria-expanded', false);
+      })
+    );
+
+    // ── Scroll animations ──
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // ── Contact form ──
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const status = document.getElementById('formStatus');
+      const name   = document.getElementById('cName').value.trim();
+      const email  = document.getElementById('cEmail').value.trim();
+
+      if (!name || !email) {
+        status.style.color = 'var(--danger)';
+        status.textContent = '⚠ Заполните имя и email.';
+        return;
+      }
+      status.style.color = 'var(--accent)';
+      status.textContent = '✓ Сообщение отправлено! Мы свяжемся с вами.';
+      this.reset();
+    });
+
+    // ── Animated counters ──
+    function animateCounter(el, target, suffix = '') {
+      let start = 0;
+      const duration = 1600;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) { start = target; clearInterval(timer); }
+        el.textContent = Math.floor(start) + suffix;
+      }, 16);
+    }
+
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const num = e.target.querySelector('.stat-card__num');
+          if (!num) return;
+          const text = num.textContent;
+          if (text.includes('60')) animateCounter(num, 60, '+');
+          else if (text.includes('25')) animateCounter(num, 25, '%');
+          else if (text.includes('80')) { num.textContent = '80–85%'; }
+          else if (text.includes('3–4')) { /* keep as is */ }
+          counterObserver.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.stat-card').forEach(el => counterObserver.observe(el));
+  </script>
+
+</body>
+</html>
